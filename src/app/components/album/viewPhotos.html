@@ -1,0 +1,10 @@
+<div id="polaroid" *ngFor="let photo of allPhotos" style="display:inline; margin:0 5px;">
+<figure *ngIf="photo['tp']=='image/jpeg'">
+<img [src]="photo['lnk']"  width="190px" height="190px"/>
+<figcaption>{{photo['desc']}}</figcaption>
+</figure>
+<video width="400" controls *ngIf="photo['tp']=='video/mp4'">
+  <source [src]="photo['lnk']">
+  Your browser does not support HTML5 video.
+</video>
+</div>

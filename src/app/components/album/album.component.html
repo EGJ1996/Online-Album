@@ -1,0 +1,28 @@
+<h1>My Personal Albums</h1>
+<div *ngFor="let al of albums | async | paginate: { itemsPerPage: 2, currentPage: p }" class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{al['name']}}</h3>
+    <a [routerLink]="['addphoto',al['$key']]">Add files to the album</a>
+    <a [routerLink]="['viewphoto',al['$key']]" class="pull-right">View the album photos</a>
+    <a [routerLink]="['slide',al['$key']]" style="margin-left:300px">Create a Slideshow</a>
+  </div>
+  <div class="panel-body">
+      {{al['description']}}
+  </div>
+  <div class="panel-footer">Date Created:{{al['dat']}}</div>
+   <button class="btn-primary" [id]="al['$key']" (click)="deleteNode($event)">Delete Album</button>
+</div>
+  <h1>My Friends Albums</h1>
+  <div *ngFor="let albs of friendalbs" class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{albs['name']}}</h3>
+    <a [routerLink]="['addphoto',albs['$key']]">Add fies to the album</a>
+    <a [routerLink]="['viewphoto',albs['$key']]" class="pull-right">View the album photos</a>
+    <a [routerLink]="['slide',albs['$key']]" style="margin-left:300px">Create a Slideshow</a>
+  </div>
+  <div class="panel-body">
+      {{albs['description']}}
+  </div>
+  <div class="panel-footer">Date Created:{{albs['dat']}}</div>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
